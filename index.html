@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="ja" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中学校技術科「B 生物育成の技術」〜ペットの育成計画と環境管理〜</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mint: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        },
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        coral: {
+                            500: '#f97316',
+                            600: '#ea580c',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Zen Maru Gothic"', '"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #1e293b;
+            user-select: none;
+        }
+
+        /* Slide Transition Animations */
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transform: scale(0.98);
+        }
+        
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Custom Scrollbar for inner card contents */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-sans overflow-hidden">
+
+    <!-- Top Navigation Bar -->
+    <header id="appHeader" class="bg-navy-900 text-white px-4 sm:px-6 py-3 flex justify-between items-center border-b border-slate-800 z-30">
+        <div class="flex items-center space-x-3">
+            <span class="bg-mint-500 text-navy-900 text-xs sm:text-sm font-black px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                <i class="fa-solid fa-graduation-cap"></i> 中学校 技術科
+            </span>
+            <h1 class="text-sm sm:text-base font-bold tracking-tight text-slate-200 hidden md:block">
+                B 生物育成の技術 〜ペットの育成計画と環境管理〜
+            </h1>
+        </div>
+
+        <div class="flex items-center space-x-2 sm:space-x-4">
+            <!-- Fullscreen Button -->
+            <button onclick="toggleFullScreen()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs sm:text-sm font-bold text-slate-300 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-expand" id="fullscreenIcon"></i>
+                <span class="hidden sm:inline">全画面</span>
+            </button>
+
+            <!-- Slide Menu Grid Toggle -->
+            <button onclick="toggleDrawer()" class="px-3 py-1.5 rounded-lg bg-mint-600 hover:bg-mint-500 text-white text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
+                <i class="fa-solid fa-th-large"></i>
+                <span>スライド一覧</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Presentation Viewer Area -->
+    <main id="slideContainer" class="flex-1 relative p-3 sm:p-6 flex items-center justify-center overflow-hidden bg-slate-950">
+        
+        <!-- ==================== SLIDE 1: Title Slide ==================== -->
+        <section id="slide-1" class="slide active w-full max-w-6xl h-full max-h-[720px] bg-white rounded-3xl shadow-2xl p-6 sm:p-12 flex-col justify-between border-4 border-mint-500/30 overflow-y-auto custom-scroll">
+            <div class="flex justify-between items-start">
+                <div class="inline-flex items-center gap-2 bg-mint-100 text-mint-700 font-black text-xs sm:text-sm px-4 py-1.5 rounded-full border border-mint-300">
+                    <i class="fa-solid fa-seedling"></i> 中学校 技術・家庭科（技術分野）学習コンテンツ
+                </div>
+                <span class="text-xs font-bold text-slate-400">単元区分：B 生物育成の技術</span>
+            </div>
+
+            <div class="my-auto py-6">
+                <div class="text-coral-500 font-black text-base sm:text-xl mb-2 flex items-center gap-2">
+                    <span>🐾 命を支えるテクノロジーと責任</span>
+                </div>
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black text-navy-900 leading-tight mb-6">
+                    ペット（伴侶動物）の<br>
+                    <span class="text-mint-600">育成計画</span>と<span class="text-coral-500">環境管理</span>
+                </h2>
+                <p class="text-slate-600 font-bold text-sm sm:text-lg leading-relaxed max-w-3xl">
+                    動物の生理的特性を理解し、生活環境を最適化する技術と、一生涯を責任持って支えるための計画的な育成アプローチを学ぼう。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-4 border-t-2 border-slate-100 text-xs sm:text-sm">
+                <div class="bg-slate-50 p-3 sm:p-4 rounded-2xl border border-slate-200 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-mint-500 text-white flex items-center justify-center font-bold text-lg">1</div>
+                    <div>
+                        <div class="font-black text-navy-900">環境調節技術</div>
+                        <div class="text-slate-500 text-xs">温湿度・栄養・衛生</div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-3 sm:p-4 rounded-2xl border border-slate-200 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-coral-500 text-white flex items-center justify-center font-bold text-lg">2</div>
+                    <div>
+                        <div class="font-black text-navy-900">生涯育成試算</div>
+                        <div class="text-slate-500 text-xs">費用・時間のリアル体験</div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-3 sm:p-4 rounded-2xl border border-slate-200 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-navy-800 text-white flex items-center justify-center font-bold text-lg">3</div>
+                    <div>
+                        <div class="font-black text-navy-900">生命倫理・責任</div>
+                        <div class="text-slate-500 text-xs">終生飼養と社会的ルール</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SLIDE 2: Learning Goals ==================== -->
+        <section id="slide-2" class="slide w-full max-w-6xl h-full max-h-[720px] bg-white rounded-3xl shadow-2xl p-6 sm:p-10 flex-col justify-between border-4 border-slate-200 overflow-y-auto custom-scroll">
+            <div class="flex items-center justify-between border-b-2 border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-mint-500 text-white flex items-center justify-center font-black text-xl">02</div>
+                    <div>
+                        <span class="text-xs font-bold text-mint-600 uppercase">Learning Objectives</span>
+                        <h3 class="text-xl sm:text-2xl font-black text-navy-900">本時の学習目標</h3>
+                    </div>
+                </div>
+                <span class="text-xs font-bold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">なぜ生物育成を学ぶのか？</span>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 my-auto py-4">
+                <!-- Goal 1 -->
+                <div class="bg-mint-50/60 border-2 border-mint-200 p-6 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-mint-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mb-4 shadow-sm">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <span class="text-xs font-black text-mint-700 bg-mint-100 px-2.5 py-1 rounded-md">目標 1：知識・理解</span>
+                        <h4 class="text-lg font-black text-navy-900 mt-2 mb-3">生物の生理的特性と環境</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 font-bold leading-relaxed">
+                            動物（犬・猫・小動物等）固有の生態や習性を理解し、それに応じた適切な「温度・湿度・光・食事・衛生」の調節技術を把握する。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-mint-200/60 text-xs font-black text-mint-700">
+                        キーワード：温湿度管理・生理機能
+                    </div>
+                </div>
+
+                <!-- Goal 2 -->
+                <div class="bg-orange-50/60 border-2 border-orange-200 p-6 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-coral-500 text-white rounded-2xl flex items-center justify-center text-2xl font-black mb-4 shadow-sm">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <span class="text-xs font-black text-coral-600 bg-orange-100 px-2.5 py-1 rounded-full">目標 2：思考・判断</span>
+                        <h4 class="text-lg font-black text-navy-900 mt-2 mb-3">生涯計画と管理シミュレーション</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 font-bold leading-relaxed">
+                            生物の生涯寿命・必要な時間・経済的コスト（医療費やエサ代）を試算し、自分や家族の生活スタイルに合致した持続可能な計画を評価する。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-orange-200/60 text-xs font-black text-coral-600">
+                        キーワード：コスト試算・ライフサイクル
+                    </div>
+                </div>
+
+                <!-- Goal 3 -->
+                <div class="bg-slate-100/70 border-2 border-slate-300 p-6 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-navy-800 text-white rounded-2xl flex items-center justify-center text-2xl font-black mb-4 shadow-sm">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <span class="text-xs font-black text-slate-700 bg-slate-200 px-2.5 py-1 rounded-full">目標 3：主体的な態度</span>
+                        <h4 class="text-lg font-black text-navy-900 mt-2 mb-3">生命尊厳と社会的責任</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 font-bold leading-relaxed">
+                            「終生飼養」の義務、マイクロチップ装着等の法律遵守、野外遺棄による生態系への影響防止など、社会の一員としての責任を自覚する。
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-300 text-xs font-black text-slate-700">
+                        キーワード：動物愛護管理法・終生飼養
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-navy-900 text-white p-4 rounded-2xl text-xs sm:text-sm font-bold flex items-center justify-between">
+                <span>💡 技術科のポイント：自然そのままではなく、「技術」を用いて命を安全かつ健やかに育む視点を持ちましょう。</span>
+            </div>
+        </section>
+
+        <!-- ==================== SLIDE 3: What is Biological Technology? ==================== -->
+        <section id="slide-3" class="slide w-full max-w-6xl h-full max-h-[720px] bg-white rounded-3xl shadow-2xl p-6 sm:p-10 flex-col justify-between border-4 border-slate-200 overflow-y-auto custom-scroll">
+            <div class="flex items-center justify-between border-b-2 border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-mint-500 text-white flex items-center justify-center font-black text-xl">03</div>
+                    <div>
+                        <span class="text-xs font-bold text-mint-600 uppercase">Technology Fundamentals</span>
+                        <h3 class="text-xl sm:text-2xl font-black text-navy-900">「生物育成の技術」の本質とは？</h3>
+                    </div>
+                </div>
+                <span class="text-xs font-bold bg-mint-100 text-mint-700 px-3 py-1 rounded-full">農作物と伴侶動物の比較</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 my-auto py-2">
+                <!-- Crop vs Pet Box -->
+                <div class="space-y-4">
+                    <div class="bg-emerald-50 p-5 rounded-2xl border border-emerald-200">
+                        <div class="font-black text-emerald-800 text-sm mb-1 flex items-center gap-2">
+                            <i class="fa-solid fa-wheat-awn text-emerald-600"></i> 農作物（植物育成の技術）
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-700 font-bold leading-relaxed">
+                            光合成・土壌養分・水分を人間の制御下におき、食料や資源の収穫量を増やすことを主な目的とする技術。
+                        </p>
+                    </div>
+
+                    <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200">
+                        <div class="font-black text-amber-900 text-sm mb-1 flex items-center gap-2">
+                            <i class="fa-solid fa-dog text-coral-500"></i> ペット・伴侶動物（動物育成の技術）
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-700 font-bold leading-relaxed">
+                            動物の自律的な生命活動・心理的快適さ（アニマルウェルフェア）に配慮し、人間と共に健康に長生きさせる技術。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Core Concept Card -->
+                <div class="bg-slate-900 text-white p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 text-slate-800 font-black text-9xl pointer-events-none opacity-40">
+                        ⚙️
+                    </div>
+                    <div>
+                        <span class="text-xs font-black text-mint-400 bg-slate-800 px-3 py-1 rounded-full">技術介入の意味</span>
+                        <h4 class="text-xl font-black mt-3 mb-3 text-white">なぜ人間の「技術」が必要なのか？</h4>
+                        <ul class="space-y-3 text-xs sm:text-sm font-bold text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-mint-400 mt-1"></i>
+                                <span>野生とは異なり、飼育下では移動や食事選択の自由がないため、人間が完璧な環境を作らなければ生きていけない。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-mint-400 mt-1"></i>
+                                <span>人間社会（室内・住宅地）のルールに適合させるための「しつけ（行動制御技術）」が必要。</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-mint-400 mt-1"></i>
+                                <span>病気予防のワクチン接種や避妊去勢手術など、現代医学技術による健康維持。</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-slate-700 text-xs font-bold text-mint-300">
+                        💬 「可愛いから飼う」ではなく「技術で生命活動をサポートする」意識を持とう！
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-100 p-3 rounded-xl text-center text-xs font-bold text-slate-600">
+                生物は工業製品と違い、「自己回復・成長するが、一度傷つくと完全復元できない生命体」である点が最大の技術的特徴です。
+            </div>
+        </section>
+
+        <!-- ==================== SLIDE 4: Environment Optimization ==================== -->
+        <section id="slide-4" class="slide w-full max-w-6xl h-full max-h-[720px] bg-white rounded-3xl shadow-2xl p-6 sm:p-10 flex-col justify-between border-4 border-slate-200 overflow-y-auto custom-scroll">
+            <div class="flex items-center justify-between border-b-2 border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-mint-500 text-white flex items-center justify-center font-black text-xl">04</div>
+                    <div>
+                        <span class="text-xs font-bold text-mint-600 uppercase">Environmental Control</span>
+                        <h3 class="text-xl sm:text-2xl font-black text-navy-900">育成環境の最適化技術</h3>
+                    </div>
+                </div>
+                <span class="text-xs font-bold bg-orange-100 text-coral-600 px-3 py-1 rounded-full">4大環境管理要素</span>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-auto py-2">
+                <!-- Element 1: Temperature & Humidity -->
+                <div class="bg-slate-50 border-2 border-slate-200 p-4 sm:p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-red-500 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-base mb-1">温度・湿度</h4>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed mb-3">
+                            汗をかきにくい動物にとって日本の夏は命取り。エアコンによる24時間温度管理。
+                        </p>
+                    </div>
+                    <div class="bg-red-50 text-red-700 text-[11px] font-black p-2 rounded-lg border border-red-200">
+                        快適目安：20〜26℃<br>湿度：40〜60%
+                    </div>
+                </div>
+
+                <!-- Element 2: Nutrition & Water -->
+                <div class="bg-slate-50 border-2 border-slate-200 p-4 sm:p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-amber-500 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-bowl-food"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-base mb-1">栄養・給水</h4>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed mb-3">
+                            人間用食品のNG（玉ねぎ・チョコ等）の排除と、年齢（幼年・成犬・老犬）に合わせた配合。
+                        </p>
+                    </div>
+                    <div class="bg-amber-50 text-amber-800 text-[11px] font-black p-2 rounded-lg border border-amber-200">
+                        新鮮な水の常時供給<br>総合栄養食の選定
+                    </div>
+                </div>
+
+                <!-- Element 3: Sanitation & Safety -->
+                <div class="bg-slate-50 border-2 border-slate-200 p-4 sm:p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-blue-500 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-pump-soap"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-base mb-1">衛生・安全</h4>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed mb-3">
+                            トイレ掃除、ケージ消毒、電気コードのかみちぎり防止用カバー設置など。
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 text-blue-800 text-[11px] font-black p-2 rounded-lg border border-blue-200">
+                        誤飲防止・防音<br>コードの物理的保護
+                    </div>
+                </div>
+
+                <!-- Element 4: Stress & Exercise -->
+                <div class="bg-slate-50 border-2 border-slate-200 p-4 sm:p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-mint-500 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-person-running"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-base mb-1">運動・刺激</h4>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed mb-3">
+                            運動不足による肥満やストレス（無駄吠え・噛み癖）を防ぐための十分な活動領域。
+                        </p>
+                    </div>
+                    <div class="bg-mint-50 text-mint-800 text-[11px] font-black p-2 rounded-lg border border-mint-200">
+                        毎日の屋外散歩<br>キャットタワー等の設置
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Spec Comparison Chart -->
+            <div class="bg-slate-900 text-white p-4 rounded-2xl text-xs sm:text-sm">
+                <div class="font-black text-mint-400 mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check"></i> ペット別の快適温度ゾーンの比較
+                </div>
+                <div class="grid grid-cols-4 gap-2 text-center font-bold">
+                    <div class="bg-slate-800 p-2 rounded-lg">🐶 犬：18〜23℃</div>
+                    <div class="bg-slate-800 p-2 rounded-lg">🐱 猫：20〜26℃</div>
+                    <div class="bg-slate-800 p-2 rounded-lg">🐰 うさぎ：18〜24℃</div>
+                    <div class="bg-slate-800 p-2 rounded-lg">🐹 ハムスター：20〜26℃</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SLIDE 5: Interactive Simulator ==================== -->
+        <section id="slide-5" class="slide w-full max-w-6xl h-full max-h-[720px] bg-white rounded-3xl shadow-2xl p-5 sm:p-8 flex-col justify-between border-4 border-mint-500 overflow-y-auto custom-scroll">
+            <div class="flex items-center justify-between border-b-2 border-slate-100 pb-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-coral-500 text-white flex items-center justify-center font-black text-xl">05</div>
+                    <div>
+                        <span class="text-xs font-bold text-coral-600 uppercase">Interactive Simulation</span>
+                        <h3 class="text-lg sm:text-2xl font-black text-navy-900">【体験】ペットの生涯育成試算 & 環境チェッカー</h3>
+                    </div>
+                </div>
+                <span class="text-xs font-black bg-coral-500 text-white px-3 py-1 rounded-full">リアルタイム計算機能</span>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-5 my-auto py-2">
+                <!-- Controls Column -->
+                <div class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+                    <div>
+                        <label class="block text-xs font-black text-navy-900 mb-1">1. ペットの種類を選択</label>
+                        <select id="simPet" onchange="runSimulation()" class="w-full bg-white border-2 border-slate-300 rounded-xl p-2.5 text-xs sm:text-sm font-bold text-navy-900 outline-none focus:border-mint-500">
+                            <option value="dog">🐶 小型〜中型犬（トイプードル等）</option>
+                            <option value="cat">🐱 室内猫</option>
+                            <option value="rabbit">🐰 うさぎ</option>
+                            <option value="hamster">🐹 ハムスター</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="text-xs font-black text-navy-900">2. 想定される生存年数</label>
+                            <span id="simYearsVal" class="text-xs font-black text-mint-600">15 年</span>
+                        </div>
+                        <input type="range" id="simYears" min="2" max="20" value="15" oninput="runSimulation()" class="w-full accent-mint-500 cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="text-xs font-black text-navy-900">3. フード＆ケアのグレード</label>
+                            <span id="simGradeVal" class="text-xs font-black text-coral-500">標準的</span>
+                        </div>
+                        <input type="range" id="simGrade" min="1" max="3" value="2" oninput="runSimulation()" class="w-full accent-coral-500 cursor-pointer">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-black text-navy-900 mb-1">4. 夏冬のエアコン管理</label>
+                        <select id="simAC" onchange="runSimulation()" class="w-full bg-white border-2 border-slate-300 rounded-xl p-2 text-xs font-bold text-navy-900 outline-none">
+                            <option value="full">24時間つけっぱなし（推奨）</option>
+                            <option value="part">人がいる時のみ（体調管理難）</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Simulation Output Column -->
+                <div class="lg:col-span-7 bg-navy-900 text-white p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <span class="text-[11px] font-black text-mint-400 uppercase tracking-widest block mb-1">生涯コスト & お世話試算結果</span>
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                                <span class="text-[10px] text-slate-400 font-bold block">推定 生涯総費用</span>
+                                <span id="simTotalCost" class="text-xl sm:text-3xl font-black text-coral-500">2,450,000 円</span>
+                            </div>
+                            <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                                <span class="text-[10px] text-slate-400 font-bold block">毎日の必要お世話時間</span>
+                                <span id="simDailyTime" class="text-xl sm:text-3xl font-black text-mint-400">約 1.5 時間</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5 text-xs font-bold text-slate-300 bg-slate-800/80 p-3 rounded-xl mb-3 border border-slate-700">
+                            <div class="flex justify-between"><span>フード代（生涯）:</span><span id="simCostFood" class="text-white font-black">--</span></div>
+                            <div class="flex justify-between"><span>医療費・ワクチン（生涯）:</span><span id="simCostMedical" class="text-white font-black">--</span></div>
+                            <div class="flex justify-between"><span>エアコン電気代・用品（生涯）:</span><span id="simCostOther" class="text-white font-black">--</span></div>
+                        </div>
+                    </div>
+
+                    <div id="simAdvice" class="bg-mint-950/80 border border-mint-500/40 p-3 rounded-xl text-xs font-bold text-mint-200">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-[11px] font-bold text-slate-500 text-center">
+                ※この数値は平均的な指標に基づくシミュレーションです。病気や介護が必要な場合は医療費が増加します。
+            </div>
+        </section>
+
+        <!-- ==================== SLIDE 6: Daily Management ==================== -->
+        <section id="slide-6" class="slide w-full max-w-6xl h-full max-h-[720px] bg-white rounded-3xl shadow-2xl p-6 sm:p-10 flex-col justify-between border-4 border-slate-200 overflow-y-auto custom-scroll">
+            <div class="flex items-center justify-between border-b-2 border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-mint-500 text-white flex items-center justify-center font-black text-xl">06</div>
+                    <div>
+                        <span class="text-xs font-bold text-mint-600 uppercase">Daily Care & Health</span>
+                        <h3 class="text-xl sm:text-2xl font-black text-navy-900">日常の適切な管理と健康チェック</h3>
+                    </div>
+                </div>
+                <span class="text-xs font-bold bg-mint-100 text-mint-700 px-3 py-1 rounded-full">ルーティンと異変のサイン</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 my-auto py-2">
+                <!-- Daily Routine Circle -->
+                <div class="bg-slate-50 p-5 rounded-3xl border-2 border-slate-200">
+                    <h4 class="font-black text-navy-900 text-base mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-rotate text-mint-600"></i> 毎日の必須ケアサイクル
+                    </h4>
+                    <div class="space-y-3 text-xs sm:text-sm font-bold">
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-mint-100 text-mint-700 font-black flex items-center justify-center text-xs">朝</span>
+                            <div>
+                                <div class="text-navy-900 font-black">給餌・水の交換・排泄物チェック</div>
+                                <div class="text-slate-500 text-xs">前日の食欲や排泄の状態を確認</div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-coral-600 font-black flex items-center justify-center text-xs">昼/夕</span>
+                            <div>
+                                <div class="text-navy-900 font-black">散歩・運動・コミュニケーション</div>
+                                <div class="text-slate-500 text-xs">歩き方や動作に異常がないか観察</div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-black flex items-center justify-center text-xs">夜</span>
+                            <div>
+                                <div class="text-navy-900 font-black">ケージ清掃・室温/湿度チェック</div>
+                                <div class="text-slate-500 text-xs">夜間の冷え込みや高温防止対策</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Check Sign List -->
+                <div class="bg-red-50/50 p-5 rounded-3xl border-2 border-red-200">
+                    <h4 class="font-black text-navy-900 text-base mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-red-500"></i> 見逃してはいけない体調不良のサイン
+                    </h4>
+                    <div class="space-y-2 text-xs sm:text-sm font-bold text-slate-700">
+                        <div class="bg-white p-2.5 rounded-xl border border-red-100 flex items-start gap-2">
+                            <span class="text-red-500">●</span>
+                            <div><strong class="text-navy-900">食欲・飲水量：</strong> 急に食べなくなる、あるいは異常に水を飲む（糖尿病や腎機能障害）</div>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-red-100 flex items-start gap-2">
+                            <span class="text-red-500">●</span>
+                            <div><strong class="text-navy-900">毛並み・皮膚：</strong> 毛のツヤがなくなる、大量の脱毛、体を頻繁にかきむしる</div>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-red-100 flex items-start gap-2">
+                            <span class="text-red-500">●</span>
+                            <div><strong class="text-navy-900">排泄物：</strong> 下痢、血便、尿が出ない（尿路結石は即緊急治療が必要）</div>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-xl border border-red-100 flex items-start gap-2">
+                            <span class="text-red-500">●</span>
+                            <div><strong class="text-navy-900">動作・姿勢：</strong> 隅に隠れてじっとしている、呼吸が荒い、びっこを引く</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-navy-900 text-white p-3 rounded-xl text-xs font-bold text-center">
+                言葉を話せない動物の不調に気づくため、「いつもの正常な状態（平熱・体重・動作）」を日常的に把握しておくことが最大の管理技術です。
+            </div>
+        </section>
+
+        <!-- ==================== SLIDE 7: Social Responsibility ==================== -->
+        <section id="slide-7" class="slide w-full max-w-6xl h-full max-h-[720px] bg-white rounded-3xl shadow-2xl p-6 sm:p-10 flex-col justify-between border-4 border-slate-200 overflow-y-auto custom-scroll">
+            <div class="flex items-center justify-between border-b-2 border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-navy-800 text-white flex items-center justify-center font-black text-xl">07</div>
+                    <div>
+                        <span class="text-xs font-bold text-slate-500 uppercase">Ethics & Legal Responsibility</span>
+                        <h3 class="text-xl sm:text-2xl font-black text-navy-900">社会的責任と生命倫理</h3>
+                    </div>
+                </div>
+                <span class="text-xs font-bold bg-slate-200 text-navy-900 px-3 py-1 rounded-full">動物愛護管理法</span>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-5 my-auto py-2">
+                <!-- Law 1: End-of-life care -->
+                <div class="bg-slate-50 border-2 border-slate-200 p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-navy-800 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-infinity"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-base mb-1">終生飼養の義務</h4>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed">
+                            「買えなくなったから捨てる」は犯罪です。法律により、命が終わるその日まで飼い続ける責任が規定されています。
+                        </p>
+                    </div>
+                    <div class="bg-slate-200 text-navy-900 text-[11px] font-black p-2 rounded-lg mt-3">
+                        遺棄・虐待は1年以下の懲役または100万円以下の罰金
+                    </div>
+                </div>
+
+                <!-- Law 2: Microchip -->
+                <div class="bg-slate-50 border-2 border-slate-200 p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-mint-600 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-base mb-1">マイクロチップ義務化</h4>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed">
+                            迷子や災害時に飼い主を特定できるよう、直径1.4mmのチップを体内に装着・データベース登録する制度。
+                        </p>
+                    </div>
+                    <div class="bg-mint-100 text-mint-800 text-[11px] font-black p-2 rounded-lg mt-3">
+                        所有者明示の技術的標準化
+                    </div>
+                </div>
+
+                <!-- Law 3: Ecosystem -->
+                <div class="bg-slate-50 border-2 border-slate-200 p-5 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-coral-500 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-3">
+                            <i class="fa-solid fa-tree"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-base mb-1">生態系への波及防止</h4>
+                        <p class="text-xs text-slate-600 font-bold leading-relaxed">
+                            外来種（ミシシッピアカミミガメ等）の放流は在来種を絶滅の危機に瀕させ、生態系を破壊します。
+                        </p>
+                    </div>
+                    <div class="bg-orange-100 text-coral-700 text-[11px] font-black p-2 rounded-lg mt-3">
+                        野外放流の絶対禁止
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 border-2 border-amber-300 p-4 rounded-2xl text-xs sm:text-sm font-bold text-amber-950 flex items-center gap-3">
+                <i class="fa-solid fa-triangle-exclamation text-2xl text-coral-500"></i>
+                <div>
+                    <strong>進学・一人暮らし・将来の環境変化：</strong>
+                    中学生の皆さんが10年後に大人になった時、進学や一人暮らしで誰が世話を引き継ぐかを事前に家族で合意しておく必要があります。
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SLIDE 8: Smart Pet Tech ==================== -->
+        <section id="slide-8" class="slide w-full max-w-6xl h-full max-h-[720px] bg-white rounded-3xl shadow-2xl p-6 sm:p-10 flex-col justify-between border-4 border-slate-200 overflow-y-auto custom-scroll">
+            <div class="flex items-center justify-between border-b-2 border-slate-100 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-xl">08</div>
+                    <div>
+                        <span class="text-xs font-bold text-blue-600 uppercase">Smart Pet Care & IoT</span>
+                        <h3 class="text-xl sm:text-2xl font-black text-navy-900">最新の育成技術とスマートケア</h3>
+                    </div>
+                </div>
+                <span class="text-xs font-bold bg-blue-100 text-blue-700 px-3 py-1 rounded-full">テクノロジーの進化</span>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-auto py-2">
+                <!-- Tech 1 -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-blue-500 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-2">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-sm mb-1">自動給餌器（IoT）</h4>
+                        <p class="text-[11px] text-slate-600 font-bold leading-relaxed">
+                            スマホ連携でタイマー通りにミリグラム単位でフードを供給。食べ残し検知機能も。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tech 2 -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-mint-500 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-2">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-sm mb-1">みまもりカメラ</h4>
+                        <p class="text-[11px] text-slate-600 font-bold leading-relaxed">
+                            外出先から室温やペットの様子を確認。マイク機能でおやつを飛ばす装置も。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tech 3 -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-coral-500 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-2">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-sm mb-1">ヘルスケア首輪</h4>
+                        <p class="text-[11px] text-slate-600 font-bold leading-relaxed">
+                            心拍数・呼吸数・活動量を24時間計測し、異常値をAIが察知してスマホへ通知。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tech 4 -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-purple-600 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-2">
+                            <i class="fa-solid fa-toilet"></i>
+                        </div>
+                        <h4 class="font-black text-navy-900 text-sm mb-1">スマートトイレ</h4>
+                        <p class="text-[11px] text-slate-600 font-bold leading-relaxed">
+                            猫の体重や尿量を回数ごとに自動計測・記録し、尿路疾患の早期発見につなげる。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caution Box -->
+            <div class="bg-navy-900 text-white p-4 rounded-2xl text-xs sm:text-sm font-bold flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">🤖</span>
+                    <div>
+                        <div class="text-mint-400 font-black">スマート技術の限界と注意点</div>
+                        <div class="text-slate-300 text-xs">停電やWi-Fi障害で動作が停止するリスクがあります。機械任せにせず、最終的には人間が直接目で見て確認するスキンシップが不可欠です。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SLIDE 9: Interactive Quiz ==================== -->
+        <section id="slide-9" class="slide w-full max-w-6xl h-full max-h-[720px] bg-white rounded-3xl shadow-2xl p-6 sm:p-10 flex-col justify-between border-4 border-coral-500 overflow-y-auto custom-scroll">
+            <div class="flex items-center justify-between border-b-2 border-slate-100 pb-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-coral-500 text-white flex items-center justify-center font-black text-xl">09</div>
+                    <div>
+                        <span class="text-xs font-bold text-coral-600 uppercase">Knowledge Test</span>
+                        <h3 class="text-xl sm:text-2xl font-black text-navy-900">【理解度チェック】生物育成クイズ</h3>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span id="quizScoreDisplay" class="text-xs font-black bg-coral-100 text-coral-600 px-3 py-1 rounded-full">スコア: 0 / 4</span>
+                </div>
+            </div>
+
+            <!-- Quiz Main Box -->
+            <div id="quizBox" class="my-auto py-2">
+                <div class="flex justify-between items-center mb-3">
+                    <span id="quizQNum" class="text-xs font-black text-mint-600 bg-mint-100 px-2.5 py-1 rounded-md">第 1 問</span>
+                </div>
+                
+                <h4 id="quizQuestion" class="text-lg sm:text-xl font-black text-navy-900 mb-4 leading-snug">
+                    問題文がここに挿入されます
+                </h4>
+
+                <div id="quizOptions" class="grid sm:grid-cols-2 gap-3 mb-4">
+                    <!-- Injected via JS -->
+                </div>
+
+                <!-- Explanation Box -->
+                <div id="quizExp" class="hidden bg-slate-900 text-white p-4 rounded-2xl text-xs sm:text-sm font-bold border-l-4 border-mint-500">
+                    <div class="text-mint-400 font-black mb-1" id="quizResultText">⭕️ 正解！</div>
+                    <p id="quizExpText" class="text-slate-300 font-normal">解説文が入ります。</p>
+                </div>
+            </div>
+
+            <!-- Quiz Controls -->
+            <div class="flex justify-between items-center pt-3 border-t border-slate-100">
+                <button onclick="resetQuiz()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-black rounded-xl transition">
+                    🔄 最初からやり直す
+                </button>
+                <button id="nextQuizBtn" onclick="nextQuiz()" class="hidden px-6 py-2.5 bg-coral-500 hover:bg-coral-600 text-white text-xs sm:text-sm font-black rounded-xl transition shadow-md">
+                    次の問題へ ➔
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Slide Control Bar -->
+    <footer id="appFooter" class="bg-navy-900 text-white px-4 sm:px-8 py-3 flex flex-col sm:flex-row justify-between items-center border-t border-slate-800 gap-3 z-30">
+        <!-- Progress Bar & Counter -->
+        <div class="flex items-center space-x-4 w-full sm:w-auto">
+            <span id="slideCounter" class="text-xs sm:text-sm font-black bg-slate-800 px-3 py-1 rounded-lg text-mint-400 whitespace-nowrap">
+                スライド 1 / 9
+            </span>
+            <div class="w-full sm:w-48 bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div id="progressBar" class="bg-mint-500 h-full w-1/9 transition-all duration-300"></div>
+            </div>
+        </div>
+
+        <!-- Slide Navigation Buttons -->
+        <div class="flex items-center space-x-3">
+            <button id="prevBtn" onclick="prevSlide()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs sm:text-sm font-black rounded-xl transition flex items-center gap-2 border border-slate-700 disabled:opacity-40 disabled:cursor-not-allowed">
+                <i class="fa-solid fa-arrow-left"></i> 前へ
+            </button>
+            <button id="nextBtn" onclick="nextSlide()" class="px-5 py-2 bg-mint-500 hover:bg-mint-600 text-navy-900 text-xs sm:text-sm font-black rounded-xl transition flex items-center gap-2 shadow-md disabled:opacity-40 disabled:cursor-not-allowed">
+                次へ <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Slide Thumbnails Drawer Modal -->
+    <div id="modalDrawer" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex-col justify-end sm:justify-center items-center p-4">
+        <div class="bg-white w-full max-w-4xl max-h-[85vh] rounded-3xl p-6 flex flex-col justify-between shadow-2xl border-2 border-mint-500 overflow-hidden">
+            <div class="flex justify-between items-center mb-4 pb-3 border-b border-slate-200">
+                <h3 class="font-black text-navy-900 text-lg sm:text-xl flex items-center gap-2">
+                    <i class="fa-solid fa-th-large text-mint-600"></i> スライド目次一覧
+                </h3>
+                <button onclick="toggleDrawer()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Slide Thumbnail Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 overflow-y-auto p-1 custom-scroll" id="drawerGrid">
+                <!-- Injected via JS -->
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-200 text-right">
+                <button onclick="toggleDrawer()" class="px-5 py-2 bg-slate-200 hover:bg-slate-300 font-black text-xs rounded-xl text-slate-800">
+                    閉じる
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Total slides count
+        const TOTAL_SLIDES = 9;
+        let currentSlide = 1;
+
+        // Slide Titles List for Drawer
+        const slideTitles = [
+            "1. タイトル",
+            "2. 本時の学習目標",
+            "3. 生物育成技術の本質",
+            "4. 環境の最適化技術",
+            "5. 【体験】生涯育成試算",
+            "6. 日常管理と健康チェック",
+            "7. 社会的責任と生命倫理",
+            "8. 最新スマート育成技術",
+            "9. 理解度チェッククイズ"
+        ];
+
+        // Quiz Questions Data
+        const quizData = [
+            {
+                q: "動物の飼育において、人間が「温度・湿度管理などの技術介入」を行う最大の理由はどれでしょう？",
+                options: [
+                    "野生と異なり、飼育下の動物は自ら快適な場所に移動する自由がないため",
+                    "電気代を節約するため",
+                    "ペットを人間に従順に服従させるため",
+                    "特に必要はなく、部屋の空気のままで問題ないため"
+                ],
+                ans: 0,
+                exp: "飼育下の動物は部屋から勝手に出られないため、人間がテクノロジー（エアコン等）を用いて生存に適した温湿度を維持する必要があります。"
+            },
+            {
+                q: "犬や猫の「一生涯にかかる平均コスト」について正しいものはどれでしょう？",
+                options: [
+                    "フード代と医療費を含めて全体で約5万円程度",
+                    "フード代・医療費・電気代などを含めて一生で約200万〜300万円程度",
+                    "医療費は人間と同じ健康保険が使えて無料である",
+                    "購入時の代金だけで、その後の費用はほとんどかからない"
+                ],
+                ans: 1,
+                exp: "ペットには公的健康保険がなく全額自己負担となるため、毎年のワクチン・フード代・夏冬の電気代を合わせると約200万〜300万円かかります。"
+            },
+            {
+                q: "動物愛護管理法により義務付けられている「マイクロチップ装着」の主な目的は？",
+                options: [
+                    "GPSでいつでも居場所を追跡するため",
+                    "迷子や災害時に離ればなれになった際、飼い主の情報を特定して返還するため",
+                    "自動で健康状態を治療するため",
+                    "毛並みを美しく保つため"
+                ],
+                ans: 1,
+                exp: "マイクロチップには15桁の識別番号が記録されており、専用リーダーで読み取ることで迷子や被災時に確実に飼い主を特定できます。"
+            },
+            {
+                q: "飼育している外国産の爬虫類や魚などを、飼えなくなったからと近くの川や山に放す行為の影響は？",
+                options: [
+                    "自然に還すので動物にとって一番幸せなことである",
+                    "生態系を破壊し、元から住んでいる日本の在来種を絶滅させる危険があり法律で禁止されている",
+                    "生態系には一切影響を与えない",
+                    "地域の環境を豊かにするため推奨されている"
+                ],
+                ans: 1,
+                exp: "外来種の遺棄は生態系のバランスを狂わせ、在来種を捕食・絶滅させる大問題を引き起こします。"
+            }
+        ];
+
+        let quizCurrentIdx = 0;
+        let quizScore = 0;
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            updateSlideView();
+            initDrawerGrid();
+            runSimulation();
+            renderQuiz();
+
+            // Keyboard Navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'f' || e.key === 'F') {
+                    toggleFullScreen();
+                }
+            });
+        });
+
+        // Slide Navigation Logic
+        function updateSlideView() {
+            for (let i = 1; i <= TOTAL_SLIDES; i++) {
+                const el = document.getElementById(`slide-${i}`);
+                if (i === currentSlide) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            }
+
+            // Update Header/Footer Controls
+            document.getElementById('slideCounter').innerText = `スライド ${currentSlide} / ${TOTAL_SLIDES}`;
+            document.getElementById('progressBar').style.width = `${(currentSlide / TOTAL_SLIDES) * 100}%`;
+
+            document.getElementById('prevBtn').disabled = (currentSlide === 1);
+            document.getElementById('nextBtn').disabled = (currentSlide === TOTAL_SLIDES);
+        }
+
+        function nextSlide() {
+            if (currentSlide < TOTAL_SLIDES) {
+                currentSlide++;
+                updateSlideView();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideView();
+            }
+        }
+
+        function goToSlide(num) {
+            currentSlide = num;
+            updateSlideView();
+            toggleDrawer(false);
+        }
+
+        // Drawer Modal Toggle
+        function toggleDrawer(forceState) {
+            const drawer = document.getElementById('modalDrawer');
+            if (typeof forceState === 'boolean') {
+                if (forceState) drawer.classList.remove('hidden');
+                else drawer.classList.add('hidden');
+            } else {
+                drawer.classList.toggle('hidden');
+            }
+        }
+
+        function initDrawerGrid() {
+            const grid = document.getElementById('drawerGrid');
+            grid.innerHTML = slideTitles.map((title, idx) => `
+                <button onclick="goToSlide(${idx + 1})" class="p-3 bg-slate-50 hover:bg-mint-50 border-2 ${currentSlide === idx + 1 ? 'border-mint-500 bg-mint-50' : 'border-slate-200'} rounded-2xl text-left transition flex flex-col justify-between">
+                    <span class="text-xs font-black text-navy-900 line-clamp-2">${title}</span>
+                    <span class="text-[10px] font-bold text-mint-600 mt-2">Slide ${idx + 1}</span>
+                </button>
+            `).join('');
+        }
+
+        // Fullscreen Toggle
+        function toggleFullScreen() {
+            const icon = document.getElementById('fullscreenIcon');
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
+                icon.className = "fa-solid fa-compress";
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                    icon.className = "fa-solid fa-expand";
+                }
+            }
+        }
+
+        // Simulation Calculator Logic
+        function runSimulation() {
+            const pet = document.getElementById('simPet').value;
+            const years = parseInt(document.getElementById('simYears').value);
+            const gradeVal = parseInt(document.getElementById('simGrade').value);
+            const acFull = document.getElementById('simAC').value === 'full';
+
+            document.getElementById('simYearsVal').innerText = `${years} 年`;
+
+            const gradeLabels = ["経済的・控えめ", "標準的", "プレミアム品質"];
+            document.getElementById('simGradeVal').innerText = gradeLabels[gradeVal - 1];
+
+            let baseYearlyFood = 60000;
+            let baseYearlyMedical = 40000;
+            let baseDailyTime = 1.5;
+
+            if (pet === 'dog') {
+                baseYearlyFood = 70000;
+                baseYearlyMedical = 50000;
+                baseDailyTime = 2.0;
+            } else if (pet === 'cat') {
+                baseYearlyFood = 50000;
+                baseYearlyMedical = 40000;
+                baseDailyTime = 1.0;
+            } else if (pet === 'rabbit') {
+                baseYearlyFood = 35000;
+                baseYearlyMedical = 25000;
+                baseDailyTime = 1.0;
+            } else if (pet === 'hamster') {
+                baseYearlyFood = 12000;
+                baseYearlyMedical = 15000;
+                baseDailyTime = 0.5;
+            }
+
+            const foodCostTotal = Math.round(baseYearlyFood * years * (0.8 + gradeVal * 0.2));
+            const medicalCostTotal = Math.round(baseYearlyMedical * years * (0.8 + gradeVal * 0.2));
+            const acCostTotal = acFull ? years * 30000 : years * 10000;
+
+            const grandTotal = foodCostTotal + medicalCostTotal + acCostTotal;
+
+            document.getElementById('simTotalCost').innerText = `${grandTotal.toLocaleString()} 円`;
+            document.getElementById('simDailyTime').innerText = `約 ${baseDailyTime} 時間`;
+
+            document.getElementById('simCostFood').innerText = `${foodCostTotal.toLocaleString()} 円`;
+            document.getElementById('simCostMedical').innerText = `${medicalCostTotal.toLocaleString()} 円`;
+            document.getElementById('simCostOther').innerText = `${acCostTotal.toLocaleString()} 円`;
+
+            const adviceBox = document.getElementById('simAdvice');
+            if (pet === 'dog') {
+                adviceBox.innerText = `💡 犬（小型〜中型）の試算：毎日の散歩時間（朝夕計1〜2時間）の確保と、約200万円以上の生涯費用に対するご家族での計画的予算設定が必要です。`;
+            } else if (pet === 'cat') {
+                adviceBox.innerText = `💡 室内猫の試算：完全室内飼育により寿命が延びています。爪とぎ対策やキャットタワーの設置、毎日のトイレ掃除がキーテクノロジーです。`;
+            } else if (pet === 'rabbit') {
+                adviceBox.innerText = `💡 うさぎの試算：暑さ寒さに大変敏感です。夏のエアコン24時間管理を怠ると熱中症の危険が高まります。`;
+            } else {
+                adviceBox.innerText = `💡 ハムスターの試算：寿命は2〜3年ですが、冬場の擬似休眠（疑似冬眠）を防ぐため室温20℃以上の加温技術が必須です。`;
+            }
+        }
+
+        // Quiz Logic
+        function renderQuiz() {
+            const q = quizData[quizCurrentIdx];
+            document.getElementById('quizQNum').innerText = `第 ${quizCurrentIdx + 1} / ${quizData.length} 問`;
+            document.getElementById('quizQuestion').innerText = q.q;
+
+            const optsBox = document.getElementById('quizOptions');
+            optsBox.innerHTML = q.options.map((opt, idx) => `
+                <button onclick="checkQuiz(${idx})" class="quiz-opt-btn p-3 text-left bg-slate-50 hover:bg-coral-50 border-2 border-slate-200 hover:border-coral-400 rounded-2xl text-xs sm:text-sm font-bold text-navy-900 transition">
+                    ${idx + 1}. ${opt}
+                </button>
+            `).join('');
+
+            document.getElementById('quizExp').classList.add('hidden');
+            document.getElementById('nextQuizBtn').classList.add('hidden');
+        }
+
+        function checkQuiz(selectedIdx) {
+            const q = quizData[quizCurrentIdx];
+            const btns = document.querySelectorAll('.quiz-opt-btn');
+
+            btns.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === q.ans) {
+                    btn.className = "quiz-opt-btn p-3 text-left bg-emerald-100 border-2 border-mint-500 rounded-2xl text-xs sm:text-sm font-black text-emerald-900";
+                } else if (idx === selectedIdx) {
+                    btn.className = "quiz-opt-btn p-3 text-left bg-red-100 border-2 border-red-400 rounded-2xl text-xs sm:text-sm font-black text-red-900";
+                }
+            });
+
+            const expBox = document.getElementById('quizExp');
+            const resultText = document.getElementById('quizResultText');
+            const expText = document.getElementById('quizExpText');
+
+            if (selectedIdx === q.ans) {
+                quizScore++;
+                resultText.innerText = "⭕️ 正解です！";
+                resultText.className = "text-mint-400 font-black mb-1";
+            } else {
+                resultText.innerText = "❌ 残念！不正解です。";
+                resultText.className = "text-red-400 font-black mb-1";
+            }
+
+            expText.innerText = q.exp;
+            expBox.classList.remove('hidden');
+
+            document.getElementById('quizScoreDisplay').innerText = `スコア: ${quizScore} / ${quizData.length}`;
+            document.getElementById('nextQuizBtn').classList.remove('hidden');
+        }
+
+        function nextQuiz() {
+            if (quizCurrentIdx < quizData.length - 1) {
+                quizCurrentIdx++;
+                renderQuiz();
+            } else {
+                alert(`クイズ完了！あなたのスコアは ${quizScore} / ${quizData.length} 点です！`);
+            }
+        }
+
+        function resetQuiz() {
+            quizCurrentIdx = 0;
+            quizScore = 0;
+            document.getElementById('quizScoreDisplay').innerText = `スコア: 0 / ${quizData.length}`;
+            renderQuiz();
+        }
+    </script>
+</body>
+</html>
